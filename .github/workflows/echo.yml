@@ -3,7 +3,7 @@ name: Echo GitHub Ref
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   echo:
