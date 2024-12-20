@@ -1,0 +1,14 @@
+name: Echo GitHub Ref
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo GitHub Ref
+        run: echo "REF: $GITHUB_REF"
