@@ -5,8 +5,7 @@ on:
       - dev
   pull_request:
     branches:
-      - main
-    types: [opened]
+      - master
 
 jobs: 
   hello_world:
