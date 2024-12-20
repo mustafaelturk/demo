@@ -6,8 +6,8 @@ on:
     - cron: '*/2 * * * *'
 
 jobs:
-  greet:
+  test_schedule:
     runs-on: ubuntu-latest
     steps:
-      - name: Each 2 min
-        run: echo "Hello from spring"
+      - name: Every time
+        run: echo "This step will always run"
