@@ -1,0 +1,13 @@
+
+name: Schedule Greeting
+
+on:
+  schedule:
+    - cron: '*/2 * * * *'
+
+job:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Each 2 min
+        run: echo "Hello from spring"
