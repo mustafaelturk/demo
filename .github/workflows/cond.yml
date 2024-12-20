@@ -6,14 +6,11 @@ on:
 
 jobs:
   hello-world:
-    if: github.repository == 'mustafaelturk/deo'
     runs-on: ubuntu-latest
     steps:
       - name: "Hello World"
+        if: github.repository == 'mustafaelturk/demo'
         run: echo "Hello World!"
-  goodbye-moon:
-    runs-on: ubuntu-latest
-    steps:
       - name: "Goodbye Moon"
         run: echo "Goodbye Moon!"
     
