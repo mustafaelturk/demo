@@ -6,7 +6,7 @@ on:
 
 jobs:
   hello-world:
-    if: github.repository == 'mustafaelturk/demo'
+    if: github.repository == 'mustafaelturk/deo'
     runs-on: ubuntu-latest
     steps:
       - name: "Hello World"
