@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo "HELLO! $MY_ACTOR"
+        run: |
+          echo "HELLO! $MY_ACTOR"
+          echo "HELLO! $MY_ACTION"
         env:
           MY_ACTION: ${{ github.action }}
           MY_ACTOR: ${{ github.actor }}
-
-
 
