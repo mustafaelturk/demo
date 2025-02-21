@@ -17,10 +17,10 @@ jobs:
 
       - name: Checkout or Create Release Branch
         run: |
-          RELEASE_BRANCH= "${{ github.event.inputs.release_branch }}"
+          RELEASE_BRANCH="${{ github.event.inputs.release_branch }}"
           # Fetch all remote branches
           git fetch origin
-          # Check if the release branch exists
+          # Check if the release branch exists on remote
           if git ls-remote --exit-code --heads origin "$RELEASE_BRANCH" > /dev/null; then
             echo "Release branch '$RELEASE_BRANCH' exists. Checking it out..."
             git checkout "$RELEASE_BRANCH"
