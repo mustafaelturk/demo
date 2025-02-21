@@ -35,7 +35,7 @@ jobs:
       - name: Merge develop into release branch
         run: |
           # Merge develop into the current branch (release branch)
-          git merge develop --no-ff -m "Merge develop into ${RELEASE_BRANCH}"
+          git merge develop --no-ff --allow-unrelated-histories -m "Merge develop into ${RELEASE_BRANCH}"
 
       - name: Push changes
         run: |
