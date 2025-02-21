@@ -17,6 +17,6 @@ jobs:
       - name: List feature branches
         run: |
           echo "Searching for branches starting with 'feature-'..."
-          for branch in $(git branch -r | grep 'origin/dev-' | sed 's/origin\///'); do
+          for branch in $(git branch -r | grep 'origin/dev' | sed 's/origin\///'); do
             echo "Found feature branch: $branch"
           done
