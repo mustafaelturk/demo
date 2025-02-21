@@ -1,0 +1,22 @@
+name: list branches
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Name of the release branch to create'
+        required: true
+
+jobs:
+  list_feature_branches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all branches
+      - name: List feature branches
+        run: |
+          echo "Searching for branches starting with 'feature-'..."
+          for branch in $(git branch -r | grep 'origin/dev-' | sed 's/origin\///'); do
+            echo "Found feature branch: $branch"
+          done
