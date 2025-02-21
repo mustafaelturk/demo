@@ -1,0 +1,42 @@
+name: Merge Develop into Release Branch
+on:
+  workflow_dispatch:
+    inputs:
+      release_branch:
+        description: 'Name of the release branch'
+        required: true
+
+jobs:
+  merge_develop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout develop branch
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      - name: Checkout or Create Release Branch
+        run: |
+          RELEASE_BRANCH= "${{ github.event.inputs.release_branch }}"
+          # Fetch all remote branches
+          git fetch origin
+          # Check if the release branch exists
+          if git ls-remote --exit-code --heads origin "$RELEASE_BRANCH" > /dev/null; then
+            echo "Release branch '$RELEASE_BRANCH' exists. Checking it out..."
+            git checkout "$RELEASE_BRANCH"
+            git pull origin "$RELEASE_BRANCH"
+          else
+            echo "Release branch '$RELEASE_BRANCH' does not exist. Creating it from develop..."
+            git checkout -b "$RELEASE_BRANCH"
+          fi
+
+      - name: Merge develop into release branch
+        run: |
+          # Merge develop into the current branch (release branch)
+          git merge develop --no-ff -m "Merge develop into ${RELEASE_BRANCH}"
+
+      - name: Push changes
+        run: |
+          git push origin "${{ github.event.inputs.release_branch }}"
+
+

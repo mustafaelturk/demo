@@ -21,6 +21,5 @@ jobs:
 
       - name: Create new release branch and push to remote
         run: |
-          git config user.name "GitHub Action"
           git checkout -b ${{ github.event.inputs.branch_name }}
           git push origin ${{ github.event.inputs.branch_name }}
